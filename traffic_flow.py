@@ -27,7 +27,8 @@ def drive_example(c, target_speed, init_pos):
 	# Steer To the old pose
 	R[u'steer'] += (init_pos - S[u'trackPos'])*.3
 
-	R[u'steer'] = np.clip(R[u'steer'], -.1, .1)
+	if S[u'angle']*180/PI < 5:
+		R[u'steer'] = np.clip(R[u'steer'], -.1, .1)
 
 	# print(R[u'steer'])
 
